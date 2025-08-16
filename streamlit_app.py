@@ -26,11 +26,11 @@ if ingredient_list:
             values ('""" + ingredients_string + """','""" + name_on_order + """')"""
     insert=st.button('Submit Order')
     #st.write(my_insert_stmt)
-smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
-#st.text(smoothiefroot_response)
-sf_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
+
     #st.stop()
     if insert:
         session.sql(my_insert_stmt).collect()
         st.success(f'Your Smoothie is ordered!, Thankyou {name_on_order}', icon="✅")
-    
+smoothiefroot_response = requests.get("https://my.smoothiefroot.com/api/fruit/watermelon")
+#st.text(smoothiefroot_response)
+sf_df=st.dataframe(data=smoothiefroot_response.json(),use_container_width=True)
